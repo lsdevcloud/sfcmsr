@@ -85,4 +85,22 @@ public class BukkitJsonConfig
     {
         return this.config;
     }
+
+    static JsonObject databaseDefaults()
+    {
+        final JsonObject d = new JsonObject();
+        d.addProperty("username", "root");
+        d.addProperty("password", "SuPeRSecUrEPaSsWorD");
+        d.addProperty("host", "localhost");
+        d.addProperty("port", "3306");
+        d.addProperty("database", "sfcmsr");
+
+        return d;
+    }
+
+    @Nullable
+    public String getString(@NonNull String key)
+    {
+        return this.get().has(key) ? this.get().get(key).toString() : null;
+    }
 }

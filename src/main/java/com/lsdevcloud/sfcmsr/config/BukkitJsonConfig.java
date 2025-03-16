@@ -22,18 +22,21 @@ public class BukkitJsonConfig
     private static final Logger LOGGER = Logger.getLogger(BukkitJsonConfig.class.getName());
 
     private final File file;
-    private JsonObject config;
+
+    protected JsonObject config, defaults;
 
     public BukkitJsonConfig(@NonNull File file)
     {
         this.file = file;
-        load(null);
+
+        load();
     }
 
-    public BukkitJsonConfig(@NonNull File file, @NonNull JsonObject config)
+    public BukkitJsonConfig(@NonNull File file, @NonNull JsonObject config, @NonNull JsonObject defaults)
     {
         this.file = file;
         this.config = config;
+        this.defaults = defaults;
     }
 
     /**
@@ -54,7 +57,7 @@ public class BukkitJsonConfig
     /**
      * loads the configuration from the file, if file doesnt exist use provided defaults or empty json object
      */
-    public void load(final @Nullable JsonObject defaults)
+    public void load()
     {
         if (!file.exists())
         {

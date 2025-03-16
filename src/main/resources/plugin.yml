@@ -1,0 +1,4 @@
+name: sfcmsr
+version: '1.0-SNAPSHOT'
+main: com.lsdevcloud.sfcmsr.SFCMSR
+api-version: '1.21'
